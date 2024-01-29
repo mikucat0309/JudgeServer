@@ -36,3 +36,4 @@ jobs:
       with:
         push: true
         tags: ghcr.io/mikucat0309/judgeserver:${{ env.VERSION }}
+        platforms: linux/amd64,linux/arm64
