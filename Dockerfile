@@ -32,8 +32,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV APT_INSTALL_ARGS='install -y --no-install-recommends'
 WORKDIR /app
 
-RUN --mount=type=cache,target=/var/cache/apt \
-    --mount=type=cache,target=/var/lib/apt/lists <<EOS
+RUN <<EOS
 set -ex
 needed="python3.12-minimal \
     python3.12-venv \
@@ -46,7 +45,6 @@ needed="python3.12-minimal \
     nodejs \
     strace"
 savedAptMark="$(apt-mark showmanual) $needed";
-rm -f /var/lib/apt/lists/lock
 apt-get update
 apt-get $APT_INSTALL_ARGS ca-certificates curl gnupg
 curl -fsSL https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor -o /etc/apt/keyrings/adoptium.gpg
