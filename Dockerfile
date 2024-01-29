@@ -46,6 +46,7 @@ needed="python3.12-minimal \
     nodejs \
     strace"
 savedAptMark="$(apt-mark showmanual) $needed";
+rm -f /var/lib/apt/lists/lock
 apt-get update
 apt-get $APT_INSTALL_ARGS ca-certificates curl gnupg
 curl -fsSL https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor -o /etc/apt/keyrings/adoptium.gpg
