@@ -17,7 +17,7 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: |
-          ghcr.io/qingdaou/oj-judge
+          ghcr.io/mikucat0309/oj-judge
         tags: |
           type=semver,pattern={{version}}
           type=semver,pattern={{major}}.{{minor}}
@@ -40,6 +40,6 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         push: true
-        platforms: linux/amd64,linux/arm64
+        # platforms: linux/amd64,linux/arm64
         tags: ${{ steps.metadata.outputs.tags }}
         annotations: ${{ steps.metadata.outputs.annotations }}
